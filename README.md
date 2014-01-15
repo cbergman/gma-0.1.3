@@ -312,16 +312,15 @@ The Linux/Unix commond "sort" is used to this purpose.
 
 ###### Step 3 - Reduce
 
-For reduce step, the "analyzer" command is used with only 3 options.
+For reduce step, the "analyzer" command is used with the following 3 options.
 
     cat mapsort.txt | ../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
 
-  ---------- ---------------------------------------------------- -------------
-  command    option                                               Description
-  analyzer   **-l**                                               Read length
-  **-t**     Threshold
-  **-o**     Expected distance between two reads if paired-end.
-  ---------- ---------------------------------------------------- -------------
+| option   | Description  | 
+| -------- | ------------ |
+| **-l**   | Read length |
+| **-t**   | Threshold |   
+| **-o**   | Expected distance between two reads if paired-end. |
 
 ### **Example Scripts**
 
@@ -348,7 +347,7 @@ so that users easily modify 3 TODOs in the scripts.
 
 Then, you can run the script in your script directory.
 
-    script$ ./expr.hadoop.yeast.sh 
+    script$ ./expr.local.yeast.sh 
 
 See Also
 --------
