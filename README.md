@@ -6,8 +6,10 @@ Name
 
 Latest Version
 :   The latest version is 0.1.3
-:   You can download gma-0.1.3.tar.gz on [download
+:   You can download the original gma-0.1.3.tar.gz on [the Sourceforge download
     page](https://sourceforge.net/projects/gma-bio/files/).
+:   You can download this modfied version of gma-0.1.3.tar.gz from [this Github repository]
+(https://github.com/cbergman/gma-0.1.3/archive/master.zip)
 
 System Requirement
 :   GMA is developed under Linux environment. Details are described
@@ -20,10 +22,10 @@ System Requirement
     $ uname -a
     Linux mshadoop1.cshl.edu 2.6.32-220.el6.x86_64 #1 SMP Tue Dec 6 19:48:22 GMT 2011 x86_64 x86_64 x86_64 GNU/Linux
 
-GMS(Genome Mappability Score) File Format
+GMS (Genome Mappability Score) File Format
 -----------------------------------------
 
-GMA outputs ".gms" extension files, which consists of 6 columns. Detail
+GMA outputs ".gms" extension files, which consists of 6 columns. A detailed
 description of each column is as follows:
 
 | field   | explanation | 
@@ -35,9 +37,9 @@ description of each column is as follows:
 | total   | This will give you rough idea of GMS. Total means how many reads are mapped to the position. The first number after "=" means the number of reads more than threshold that a user can set as a GMA parameters. Thus they are considered reliable reads. However the second number means the number of reads that is less than threshold so they are unreliable reads. Based on such information guide you rough GMS. |
 | GMS     | This is the score that shows how reliably each base of the genome can be mapped. |
  
-This is a snippet of *E. coli* gms file.
+This is a snippet of *E.* *coli* gms file.
 
-***E. coli***
+***E.*** ***coli***
 
     #chr            pos             base    maq             total = >= + <(um)   GMS
     NC_000913       000000001       A       (60,-1)(-1,-1)  1 = 1 + 0(0)         99.9999
@@ -63,7 +65,7 @@ This is a snippet of *E. coli* gms file.
 
 This is a snippet of *hg19* gms file.
 
-*'*hg19 (Homo Sapiens ver.19) *'*
+***hg19 (Homo Sapiens ver.19) ***
 
     #chr            pos             base    maq             total = >= + <(um)   GMS
     chrX            000093411       G       (20,-1)(37,-1)  200 = 47 + 153(0)    38.7653
@@ -108,16 +110,16 @@ This is a snippet of *hg19* gms file.
 Installation
 ------------
 
-​1. Download the latest version of GMA
-[here](https://sourceforge.net/projects/gma-bio/files/).
+​1. Download the modfied version of the latest version of GMA
+[here](https://github.com/cbergman/gma-0.1.3/archive/master.zip).
 
 ​2. Extract files.
 
-    $ tar xvfz gma-0.1.3.tar.gz 
+    $ unzip master.zip
 
-If you go to "gma-0.1.3" directory, there are 6 directories.
+If you go to "gma-0.1.3-master" directory, there are 6 directories.
 
-    $ cd gma-0.1.3/
+    $ cd gma-0.1.3-master/
     bin  example  inc  lib  script  src
 
 ​3. Now you have two options to run GMA
