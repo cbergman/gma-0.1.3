@@ -1,0 +1,134 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.6	//
+AC_KSEQ_H	kseq.h	31;"	d
+ARGC	null_reducer.c	114;"	d	file:
+ARGC_MAX	main_mapper.c	95;"	d	file:
+ARGC_MAX	reducer.c	116;"	d	file:
+BASES_PER_LINE	genfa.c	11;"	d	file:
+BASES_PER_LINE_MAX	genfa.c	12;"	d	file:
+BUF_SIZE	genfa.c	15;"	d	file:
+BUF_SIZE	null_reducer.c	113;"	d	file:
+BUF_SIZE	reducer.c	115;"	d	file:
+CC	Makefile	/^CC=	gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=	-g -Wall $/;"	m
+CFLAGS	Makefile	/^CFLAGS=	-g -Wall -DNERSC$/;"	m
+FALSE	main_mapper.c	22;"	d	file:
+FILE_OPT_O	runall.c	14;"	d	file:
+FILE_OPT_S	runall.c	15;"	d	file:
+FQ_MAX_LEN	genfq.c	12;"	d	file:
+FST	prob_cal.c	9;"	d	file:
+KSEQ_INIT	genfq.c	/^KSEQ_INIT( gzFile, gzread )$/;"	f
+KSEQ_INIT	kseq.h	217;"	d
+KSEQ_INIT	kseq_test.c	/^KSEQ_INIT(gzFile, gzread)$/;"	f
+KSTREAM_INIT	kseq.h	139;"	d
+KSTRING_T	kseq.h	81;"	d
+KS_SEP_MAX	kseq.h	39;"	d
+KS_SEP_SPACE	kseq.h	37;"	d
+KS_SEP_TAB	kseq.h	38;"	d
+LDFLAGS	Makefile	/^LDFLAGS=	-L..\/lib$/;"	m
+LIBS	Makefile	/^LIBS=	-lz -lbam -lm 	$/;"	m
+NUM_LINE	genfa.c	13;"	d	file:
+OBJS_MAP	Makefile	/^OBJS_MAP=	main_mapper.o genfa.o mapper.o genfq.o runall.o $/;"	m
+OBJS_NULLRED	Makefile	/^OBJS_NULLRED=	main_reducer.o null_reducer.o $/;"	m
+OBJS_RED	Makefile	/^OBJS_RED=	main_reducer.o reducer.o prob_cal.o$/;"	m
+OVERLAY	genfa.c	14;"	d	file:
+READ1	prob_cal.c	6;"	d	file:
+READ2	prob_cal.c	7;"	d	file:
+SND	prob_cal.c	10;"	d	file:
+TRUE	main_mapper.c	21;"	d	file:
+VERSION_BUILD	main_mapper.c	19;"	d	file:
+VERSION_BUILD	main_reducer.c	18;"	d	file:
+VERSION_MAJOR	main_mapper.c	17;"	d	file:
+VERSION_MAJOR	main_reducer.c	16;"	d	file:
+VERSION_MINOR	main_mapper.c	18;"	d	file:
+VERSION_MINOR	main_reducer.c	17;"	d	file:
+__KSEQ_BASIC	kseq.h	145;"	d
+__KSEQ_READ	kseq.h	170;"	d
+__KSEQ_TYPE	kseq.h	210;"	d
+__KS_BASIC	kseq.h	51;"	d
+__KS_GETC	kseq.h	67;"	d
+__KS_GETUNTIL	kseq.h	92;"	d
+__KS_TYPE	kseq.h	41;"	d
+__kstring_t	kseq.h	/^typedef struct __kstring_t {$/;"	s
+_prob_base	prob_cal.c	/^typedef struct _prob_base$/;"	s	file:
+_prob_window	prob_cal.c	/^typedef struct _prob_window$/;"	s	file:
+anal_t	mapper.c	/^} anal_t;  $/;"	t	typeref:struct:__anon1	file:
+analyzer	null_reducer.c	/^void analyzer(int argc, char *argv[])  $/;"	f
+analyzer	reducer.c	/^void analyzer(int argc, char *argv[])  $/;"	f
+bad	prob_cal.c	/^    int  bad;$/;"	m	struct:_prob_base	file:
+base	prob_cal.c	/^    char base;$/;"	m	struct:_prob_base	file:
+beg	mapper.c	/^    int beg, end;  $/;"	m	struct:__anon1	file:
+check_fill_prob_base	prob_cal.c	/^void check_fill_prob_base( prob_base * pb, char *chr, int pos, char base, int read, int qual, int flag  )$/;"	f
+circulate_window_list	prob_cal.c	/^void circulate_window_list( prob_base * head, int read, int threshold )$/;"	f
+clean_windows	prob_cal.c	/^void clean_windows( FILE * output, char * org_chr, int org_pos, int length, int threshold )$/;"	f
+compute_gms	prob_cal.c	/^void compute_gms( prob_base * head, int threshold )$/;"	f
+destroy_prob_window	prob_cal.c	/^void destroy_prob_window( )$/;"	f
+end	mapper.c	/^    int beg, end;  $/;"	m	struct:__anon1	file:
+extractor	mapper.c	/^int extractor( int argc, char *argv[] )$/;"	f
+fill_prob_base	prob_cal.c	/^void fill_prob_base( prob_base * pb, int pos, char base, int read, int qual, int flag  )$/;"	f
+fill_qual_flag	prob_cal.c	/^void fill_qual_flag( prob_base *pb, int read, int num, int qual, int flag )$/;"	f
+fill_window	prob_cal.c	/^int fill_window( FILE * output, int range, char *chr, int pos, char base, int flag, int qual, int threshold )$/;"	f
+find_chr	mapper.c	/^int find_chr( char *name, kseq_t *seq, char *chr )$/;"	f
+flag	prob_cal.c	/^    int  flag[2][2];$/;"	m	struct:_prob_base	file:
+genfa	genfa.c	/^int genfa(int argc, char *argv[] ) \/\/, int length)$/;"	f
+genfq	genfq.c	/^void genfq(int argc, char *argv[])$/;"	f
+get_info	null_reducer.c	/^void get_info( char * input, $/;"	f
+get_info	reducer.c	/^void get_info( char * input, $/;"	f
+get_output_name	genfq.c	/^void get_output_name( char * buf )$/;"	f
+good	prob_cal.c	/^    int  good;$/;"	m	struct:_prob_base	file:
+head	prob_cal.c	/^    prob_base * head;$/;"	m	struct:_prob_window	file:
+in	mapper.c	/^    samfile_t *in;  $/;"	m	struct:__anon1	file:
+init_prob_base	prob_cal.c	/^void init_prob_base( prob_base * pb )$/;"	f
+init_prob_window	prob_cal.c	/^void init_prob_window( int length )$/;"	f
+kroundup32	kseq.h	89;"	d
+ks_eof	kseq.h	48;"	d
+ks_rewind	kseq.h	49;"	d
+kstring_t	kseq.h	/^} kstring_t;$/;"	t	typeref:struct:__kstring_t
+l	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+length	prob_cal.c	/^    int length;$/;"	m	struct:_prob_window	file:
+m	kseq.h	/^	size_t l, m;$/;"	m	struct:__kstring_t
+main	main_mapper.c	/^int main( int argc, char *argv[] )$/;"	f
+main	main_reducer.c	/^int main( int argc, char *argv[] )$/;"	f
+make_complement_reverse	genfq.c	/^void make_complement_reverse( char *rev, char *seq, int length )$/;"	f
+mapper	mapper.c	/^void mapper( char *ref, int length, int start_base_pos, const char *bam )$/;"	f
+maq	prob_cal.c	/^    int  maq[2][2];$/;"	m	struct:_prob_base	file:
+max	prob_cal.c	42;"	d	file:
+min	prob_cal.c	39;"	d	file:
+min_maq	prob_cal.c	/^void min_maq( prob_base * head, int read, int *qual, int *flag )$/;"	f
+move_next_prob_base	prob_cal.c	/^void move_next_prob_base( int pos )$/;"	f
+move_window	prob_cal.c	/^int move_window( FILE * output, int range, char *chr, int pos, char base, int flag, int qual, int threshold )$/;"	f
+next	prob_cal.c	/^    struct _prob_base * next;$/;"	m	struct:_prob_base	typeref:struct:_prob_base::_prob_base	file:
+next_pos	prob_cal.c	/^    int next_pos;$/;"	m	struct:_prob_window	file:
+output_name	genfq.c	/^static char output_name[64] = { 0, };$/;"	v	file:
+parse_args	genfa.c	/^static int parse_args( int argc, char *argv[], char *fasta, int *bpl )$/;"	f	file:
+parse_args	genfq.c	/^static int parse_args( int argc, char *argv[], $/;"	f	file:
+parse_args	mapper.c	/^static int parse_args( int argc, char *argv[],$/;"	f	file:
+parse_args	null_reducer.c	/^static int parse_args( int argc, char *argv[],$/;"	f	file:
+parse_args	reducer.c	/^static int parse_args( int argc, char *argv[],$/;"	f	file:
+parse_args	runall.c	/^static int parse_args( int argc, char *argv[], $/;"	f	file:
+pileup_func	mapper.c	/^static int pileup_func(uint32_t tid, uint32_t pos, int n, const bam_pileup1_t *pl, void *data)  $/;"	f	file:
+pos	prob_cal.c	/^    int  pos;$/;"	m	struct:_prob_base	file:
+prev_pos	prob_cal.c	/^    int prev_pos;$/;"	m	struct:_prob_window	file:
+print_prob_base	prob_cal.c	/^void print_prob_base( char *chr, prob_base * pb, char *mark)$/;"	f
+prob_base	prob_cal.c	/^} prob_base;$/;"	t	typeref:struct:_prob_base	file:
+prob_window	prob_cal.c	/^} prob_window;$/;"	t	typeref:struct:_prob_window	file:
+pw	prob_cal.c	/^prob_window pw;$/;"	v
+qual	prob_cal.c	/^    double qual;$/;"	m	struct:_prob_base	file:
+random_convert	genfq.c	/^char random_convert( char base )$/;"	f
+run_bwa	runall.c	/^static int run_bwa( char *fasta, char *fastq_se, char *fastq_pe ) \/\/, int length  )$/;"	f	file:
+run_exc_cp	runall.c	/^void run_exc_cp( char *src, char *dst )$/;"	f
+run_exc_ls	runall.c	/^void run_exc_ls( char * dir )$/;"	f
+run_exc_rm	runall.c	/^void run_exc_rm( char *filepath )$/;"	f
+run_samtools	runall.c	/^static int run_samtools( char *fasta, const char *aln_sam, $/;"	f	file:
+runall	runall.c	/^void runall(int argc, char *argv[])  $/;"	f
+s	kseq.h	/^	char *s;$/;"	m	struct:__kstring_t
+tail	prob_cal.c	/^    prob_base * tail;$/;"	m	struct:_prob_window	file:
+timestamp	runall.c	/^void timestamp()$/;"	f
+total	prob_cal.c	/^    int  total;$/;"	m	struct:_prob_base	file:
+unmapped	prob_cal.c	/^    int  unmapped;$/;"	m	struct:_prob_base	file:
+usage	main_mapper.c	/^static void usage()$/;"	f	file:
+usage	main_reducer.c	/^static void usage()$/;"	f	file:
