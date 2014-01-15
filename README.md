@@ -2,17 +2,20 @@ Introduction
 ------------
 
 Name
-:   GMA - Genome Mappability Analyzer
+
+   GMA - Genome Mappability Analyzer
 
 Latest Version
-:   The latest version is 0.1.3
-:   You can download the original gma-0.1.3.tar.gz on [the Sourceforge download
-    page](https://sourceforge.net/projects/gma-bio/files/).
-:   You can download this modfied version of gma-0.1.3.tar.gz from [this Github repository]
+
+   The latest version is 0.1.3
+   You can download the original gma-0.1.3.tar.gz on [the Sourceforge download 
+   page](https://sourceforge.net/projects/gma-bio/files/).
+   You can download this modfied version of gma-0.1.3.tar.gz from [this Github repository]
     (https://github.com/cbergman/gma-0.1.3/archive/master.zip)
 
 System Requirement
-:   GMA is developed under Linux environment. Details are described
+
+   GMA is developed under Linux environment. Details are described
     below, and thus it will work in similar environments that we
     support. If you're Windows user, you may need
     [cygwin](http://www.cygwin.com/).
