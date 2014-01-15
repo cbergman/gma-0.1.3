@@ -26,13 +26,13 @@ GMS(Genome Mappability Score) File Format
 GMA outputs ".gms" extension files, which consists of 6 columns. Detail
 description of each column is as follows:
 
-  ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  chr     | This shows chromosomes if it is species that have multi chromosomes. Otherwise it means the species.
-  pos     | Position. Note that it begins with "1" not "0".
-  base    | Base from aligning results. Note that if it's not a,c,g,t/A,C,G,T, then the alignment tool failed to map reads to this position. In this case, "\*" will be shown.
-  maq     | By design, each position can have 4 mapping quality scores at maximum. All slots are initialized with "-1". If any mapping quality scores are assigned, non-negative numbers should be shown.
-  total   | This will give you rough idea of GMS. Total means how many reads are mapped to the position. The first number after "=" means the number of reads more than threshold that a user can set as a GMA parameters. Thus they are considered reliable reads. However the second number means the number of reads that is less than threshold so they are unreliable reads. Based on such information guide you rough GMS.
-  GMS     | This is the score that shows how reliably each base of the genome can be mapped.
+|  ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  chr     | This shows chromosomes if it is species that have multi chromosomes. Otherwise it means the species. |
+|  pos     | Position. Note that it begins with "1" not "0". |
+|  base    | Base from aligning results. Note that if it's not a,c,g,t/A,C,G,T, then the alignment tool failed to map reads to this position. In this case, "\*" will be shown. |
+|  maq     | By design, each position can have 4 mapping quality scores at maximum. All slots are initialized with "-1". If any mapping quality scores are assigned, non-negative numbers should be shown. |
+|  total   | This will give you rough idea of GMS. Total means how many reads are mapped to the position. The first number after "=" means the number of reads more than threshold that a user can set as a GMA parameters. Thus they are considered reliable reads. However the second number means the number of reads that is less than threshold so they are unreliable reads. Based on such information guide you rough GMS. |
+|  GMS     | This is the score that shows how reliably each base of the genome can be mapped. |
   ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 This is a snippet of *E.coli* gms file.
