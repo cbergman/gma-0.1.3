@@ -9,7 +9,7 @@ Latest Version
 :   You can download the original gma-0.1.3.tar.gz on [the Sourceforge download
     page](https://sourceforge.net/projects/gma-bio/files/).
 :   You can download this modfied version of gma-0.1.3.tar.gz from [this Github repository]
-(https://github.com/cbergman/gma-0.1.3/archive/master.zip)
+    (https://github.com/cbergman/gma-0.1.3/archive/master.zip)
 
 System Requirement
 :   GMA is developed under Linux environment. Details are described
