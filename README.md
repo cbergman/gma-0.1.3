@@ -222,23 +222,23 @@ Since this may not be trivial for users, here we explain how it works.
 
 #### **Run by technology**
 
-For a quick run, we provide 5 kinds of the most popular sequencing
+For a quick run, we provide parameter settings 5 kinds of the most popular sequencing
 technologies; Illumina, Solid, Ion Torrent, Roche-454 and PacBio. You can use
-one of them instead of Illumina in below command. We also support
-pacbio-ec, which assumes PacBio error corrected case.
+one of these options to pass to the mapper tech command, similar to how the illumina option is
+used in the command below. We also support pacbio-ec, which assumes PacBio error corrected case.
 
     cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper tech --illumina -b 70 -x 
     ../../../input/index/NC_000913.fna -p ../../../../../bin 1> map.txt
 
-  ------------------ --------------------------------------------- -----------------------
-  command            option                                        Description
-  tech               **--illumina**                                Settings for Illumina
-  **--solid**        Settings for Solid
-  **--iontorrent**   Settings for Ion Torrent
-  **--roche**        Settings for Roche/454
-  **--pacbio**       Settings for PacBio
-  **--pacbio-ec**    Settings for PacBio error corrected version
-  ------------------ --------------------------------------------- -----------------------
+| option           | Description  | 
+| ---------------- |------------- |
+| **--illumina**   | Settings for Illumina |
+| **--solid**      | Settings for Solid |
+| **--iontorrent** | Settings for Ion Torrent |
+| **--roche**      | Settings for Roche/454 |
+| **--pacbio**     | Settings for PacBio |
+| **--pacbio-ec**  | Settings for PacBio error corrected version |
+
 
 #### **Run using your own settings**
 
@@ -285,24 +285,24 @@ input(*stdin*). The format of command is as follows:
 
     mapper <command> [options] > map.txt
 
-Commands, options and description for *mapper* is described in below
+Options and descriptions for the *mapper runnall* command are described in below
 table.
 
-  --------- ------------------------------------------------------------------------------------------------------------------------------------------------------- -------------
-  command   option                                                                                                                                                  Description
-  runnall   **-l**                                                                                                                                                  Read length
-  **-q**    Phred-scaled quality value for each base
-  **-s**    Error rate of substitution
-  **-i**    Error rate of insertion
-  **-d**    Error rate of deletion
-  **-o**    Expected distance between two reads if paired-end.
-  **-t**    Threshold
-  **-f**    File path of a reference fasta
-  **-b**    The number of bases in a line when re-building fasta file from pre-processed file. It is important to use the same number of the original fasta file.
-  **-x**    File path of index files
-  **-m**    File path of bam file
-  **-p**    File path for programs such as BWA and SAMtools
-  --------- ------------------------------------------------------------------------------------------------------------------------------------------------------- -------------
+| option   | Description  | 
+| -------- | ------------ |
+| **-l**   | Read length |
+| **-q**   | Phred-scaled quality value for each base |
+| **-s**   | Error rate of substitution |
+| **-i**   | Error rate of insertion |
+| **-d**   | Error rate of deletion |
+| **-o**   | Expected distance between two reads if paired-end. |
+| **-t**   | Threshold |
+| **-f**   | File path of a reference fasta |
+| **-b**   | The number of bases in a line when re-building fasta file from pre-processed file. It is important to use the same number of the original fasta file. |
+| **-x**   | File path of index files |
+| **-m**   | File path of bam file |
+| **-p**   | File path for programs such as BWA and SAMtools |
+
 
 Step2 sort/shuffle
 
