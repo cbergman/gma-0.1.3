@@ -27,16 +27,16 @@ for l in 100; do
           echo "p:$p" >> ../timestamp.txt
 		  echo "--" >> ../timestamp.txt
 
-          cat /bluearc/data/schatz/hlee/genome/yeast/ppd/chr9.fa.ppd | /local2/work/hlee/schatzlab-public/gma/bin/mapper runall -l $l -q A -s $s -i $i -d $d -o $o -t 20 -f ref.fa -b 70 -x ../../../input/index/NC_000913.fna  -p ../../../../../bin 1> map.txt
+          cat ../../../input/ppd/*.ppd | ../../../../../bin/mapper runall -l $l -q A -s $s -i $i -d $d -o $o -t 20 -f ref.fa -b 70 -x ../../../input/index/yeast.fa  -p ../../../../../bin 1> map.txt
 
           echo "sorting..."
-          cat map.txt | sort > mapsort.txt
+          cat map.txt | sort -k1,1 -t"|" > mapsort.txt
 
           echo "complete"
           echo "====================================="
 
           echo "analyzing..."
-          cat mapsort.txt | /local2/work/hlee/schatzlab-public/gma/bin/reducer analyzer -l $l -t 20 -o $o 1> mapred.txt
+          cat mapsort.txt | ../../../../../bin/reducer analyzer -l $l -t 20 -o $o 1> mapred.txt
 
           echo "====================================="
           echo "reducer is done"
@@ -48,7 +48,7 @@ for l in 100; do
   done;
 done;
 
-
 cd ../../../../../script/
+
 
 
