@@ -220,7 +220,7 @@ more intuitive under
 the local version of GMA is run using a the combination of two programs.
 Since this may not be trivial for users, here we explain how it works.
 
-#### **Run by technology**
+#### **Run using pre-existing settings for different NGS technologies**
 
 For a quick run, we provide parameter settings 5 kinds of the most popular sequencing
 technologies; Illumina, Solid, Ion Torrent, Roche-454 and PacBio. You can use
@@ -249,7 +249,7 @@ are included for E. coli and yeast, but you will need to prepare your own .ppd f
 different species. This is how you can generate pre-processed file for
 map step.
 
-Step0 preprocess fasta files into .ppd files
+###### Step 0 - Preprocess fasta files into .ppd files
 
 <!-- -->
 
@@ -273,7 +273,7 @@ Step0 preprocess fasta files into .ppd files
     chr16.fa.ppd is being processed
     chrMT.fa.ppd is being processed
 
-Step1 map
+###### Step 1 - Map
 
 <!-- -->
 
@@ -304,15 +304,15 @@ table.
 | **-p**   | File path for programs such as BWA and SAMtools |
 
 
-Step2 sort/shuffle
+###### Step 2 - Sort
 
-L/Unix commond "sort" is properly used to this purpose.
+The Linux/Unix commond "sort" is used to this purpose.
 
-    cat map.txt | sort > mapsort.txt
+    cat map.txt | sort -k1,1 -t"|"  > mapsort.txt
 
-Step3 Reduce
+###### Step 3 - Reduce
 
-For reduce step, "analyzer" command is used with only 3 options.
+For reduce step, the "analyzer" command is used with only 3 options.
 
     cat mapsort.txt | ../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
 
@@ -323,9 +323,9 @@ For reduce step, "analyzer" command is used with only 3 options.
   **-o**     Expected distance between two reads if paired-end.
   ---------- ---------------------------------------------------- -------------
 
-### **Hadoop version**
+### **Example Scripts**
 
-In the *script* directory there are 4 script files;
+In the *script* directory there are 6 script files:
 
 -   expr.hadoop.ecoli.sh
 -   expr.hadoop.yeast.sh
@@ -334,9 +334,10 @@ In the *script* directory there are 4 script files;
 -   expr.local.ecoli.tech.sh
 -   expr.local.yeast.tech.sh
 
-Once you have cloud computing system on your local machine or from
-commercial services such as EC2, you can use expr.hadoop.\* script file
-for your convenience. This is a simple guideline. Since we have no idea
+The local scripts demonstrate how to run GMA on a single workstation. The scripts 
+with tech in theit filenames run with pre-set options for different NGS technologies.
+The hadoop scripts demonstrate how to run GMA on a cloud computing system
+such as EC2, you can use expr.hadoop.\* script file This is a simple guideline. Since we have no idea
 about your system environment, you need to modify the given scripts
 along to your system. There are explicitly specified with keyword "TODO"
 so that users easily modify 3 TODOs in the scripts.
