@@ -203,7 +203,8 @@ more intuitive under [MapReduce](http://en.wikipedia.org/wiki/MapReduce).
 The local version of GMA is run using a the combination of two programs. 
 Help menus for the mapper and reducer programs are as follows. 
 
-    $ ../../../../../bin/mapper -h
+    $ cd gma-0.1.3-master/bin/
+    $ mapper -h
     
     Program : GMA (Genome Mappability Analyzer) MAPPER
     Version : 0.0.1
