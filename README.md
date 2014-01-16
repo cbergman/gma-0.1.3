@@ -20,8 +20,6 @@ Introduction
     support. If you're Windows user, you may need
     [cygwin](http://www.cygwin.com/).
 
-<!-- -->
-
     $ uname -a
     Linux mshadoop1.cshl.edu 2.6.32-220.el6.x86_64 #1 SMP Tue Dec 6 19:48:22 GMT 2011 x86_64 x86_64 x86_64 GNU/Linux
 
@@ -68,7 +66,7 @@ This is a snippet of *E.* *coli* gms file.
 
 This is a snippet of *hg19* gms file.
 
-***hg19 (Homo Sapiens ver.19) ***
+***hg19 (Homo Sapiens ver.19)***
 
     #chr            pos             base    maq             total = >= + <(um)   GMS
     chrX            000093411       G       (20,-1)(37,-1)  200 = 47 + 153(0)    38.7653
@@ -91,30 +89,14 @@ This is a snippet of *hg19* gms file.
     chrX            000093428       C       (18,-1)(41,-1)  200 = 72 + 128(0)    55.6532
     chrX            000093429       T       (18,-1)(41,-1)  200 = 73 + 127(0)    56.6452
     chrX            000093430       G       (18,-1)(41,-1)  200 = 74 + 126(0)    57.6373
-    chrX            000093431       T       (18,-1)(41,-1)  200 = 75 + 125(0)    58.6293
-    chrX            000093432       G       (18,-1)(41,-1)  200 = 76 + 124(0)    59.6213
-    chrX            000093433       C       (18,-1)(41,-1)  200 = 77 + 123(0)    60.6134
-    chrX            000093434       A       (18,-1)(41,-1)  200 = 78 + 122(0)    61.6054
-    chrX            000093435       A       (0,-1)(23,-1)   200 = 79 + 121(0)    62.1029
-    chrX            000093436       C       (0,-1)(23,-1)   200 = 80 + 120(0)    62.6004
-    chrX            000093437       C       (0,-1)(23,-1)   200 = 81 + 119(0)    63.0979
-    chrX            000093438       T       (0,-1)(23,-1)   200 = 82 + 118(0)    63.5954
-    chrX            000093439       T       (0,-1)(23,-1)   200 = 83 + 117(0)    64.0929
-    chrX            000093440       T       (0,-1)(23,-1)   200 = 84 + 116(0)    64.5904
-    chrX            000093441       A       (0,-1)(23,-1)   200 = 85 + 115(0)    65.0879
-    chrX            000093442       G       (0,-1)(23,-1)   200 = 86 + 114(0)    65.5854
-    chrX            000093443       A       (0,-1)(23,-1)   200 = 87 + 113(0)    66.0829
-    chrX            000093444       G       (0,-1)(23,-1)   200 = 88 + 112(0)    66.5803
-    chrX            000093445       T       (0,-1)(23,-1)   200 = 89 + 111(0)    67.0778
-    chrX            000093446       C       (0,-1)(23,-1)   200 = 90 + 110(0)    67.5753
-    chrX            000093447       T       (0,-1)(0,-1)    200 = 89 + 111(0)    67.0785
-    chrX            000093448       G       (0,-1)(0,-1)    200 = 88 + 112(0)    66.5816
-
+ 
 Installation
 ------------
 
 ​1. Download the modfied version of the latest version of GMA
 [here](https://github.com/cbergman/gma-0.1.3/archive/master.zip).
+
+    $ wget https://github.com/cbergman/gma-0.1.3/archive/master.zip
 
 ​2. Extract files.
 
@@ -136,21 +118,22 @@ package. They fix bugs and improve their programs, so it is your
 responsibility to update those programs. If they are updated, you can
 always change them with new versions.
 
-    $ cd bin
+This modified distribution also includes bedGraphToBigWig to allow conversion 
+of GMA output to bigWig format.
+
+    $ cd gma-0.1.3-master/bin
     $ ls
-    bwa mapper reducer samtools
+    bwa mapper reducer samtools bedGraphToBigWig
 
 ​(2) Compiling source code.
 
 You may want to get binary files from compiling source code. Then go to
 src/ directory and "make".
 
-    $ cd src
+    $ cd gma-0.1.3-master/src
     $ make
 
-:   If you get errors below, you need to intall *libz* library.
-
-<!-- -->
+If you get errors below, you need to install *libz* library.
 
     $ make
     gcc -g -Wall  -L../lib main_mapper.o genfa.o mapper.o genfq.o runall.o  -o mapper -lz -lbam -lm     
@@ -158,9 +141,9 @@ src/ directory and "make".
     collect2: ld returned 1 exit status
     make: *** [mapper] Error 1
 
-:   If compiling works smoothly, you can find new binary files in bin/
-    directory. Note that there will be no binary files newly generated
-    in src/ directory. Makefile script moves them to bin/ automatically.
+If compiling works smoothly, you can find new binary files in bin/
+directory. Note that there will be no binary files newly generated
+in src/ directory. Makefile script moves them to bin/ automatically.
 
 Commands and Options
 --------------------
@@ -178,25 +161,26 @@ sub-directory called "ecoli", which has pre-computed indexes and
 a pre-processed fasta file named *NC\_000913.fa.ppd* inside the input/index and 
 input/ppd directories, respectively.
 
-    gma-0.1.3$ ls
+    $ cd gma-0.1.3-master/
+    $ ls
     bin  example  inc  lib  script  src
-    gma-0.1.3$ ls example 
+    ls example 
     ecoli yeast
-    gma-0.1.3$ ls example/ecoli 
+    $ ls example/ecoli 
     input output
-    gma-0.1.3$ ls example/ecoli/input
+    $ ls example/ecoli/input
     index  ppd  
-    gma-0.1.3$ ls example/ecoli/input/index
+    $ ls example/ecoli/input/index
     NC_000913.fna      NC_000913.fna.ann  NC_000913.fna.pac   NC_000913.fna.rpac  NC_000913.fna.sa
     NC_000913.fna.amb  NC_000913.fna.bwt  NC_000913.fna.rbwt  NC_000913.fna.rsa
-    gma-0.1.3$ ls example/ecoli/input/ppd
+    $ ls example/ecoli/input/ppd
     NC_000913.fa.ppd
 
 
 Now, all you need is to run script in script/ directory.
 
-    gma-0.1.3$ cd script/
-    gma-0.1.3/script$ ./expr.local.ecoli.sh 
+    $ cd gma-0.1.3-master/script/
+    $ ./expr.local.ecoli.sh 
     .
     .
     .
@@ -204,11 +188,11 @@ Now, all you need is to run script in script/ directory.
 Now, you can see a new directory, named "ecoli.l100.o0.qA.s0.02.i0.d0 "
 is generated with "timestamp.txt". The result file name is "mapred.txt".
 
-    gma-0.1.3/script$ cd ../example/ecoli/output/local
-    gma-0.1.3/example/ecoli/output/local$ ls
-    ecoli.l100.o0.qA.s0.02.i0.d0 
-    gma-0.1.3/example/ecoli$ cd ecoli.l100.o0.qA.s0.02.i0.d0 
-    gma-0.1.3/example/ecoli/ecoli.l100.o0.qA.s0.02.i0.d0$ less mapred.txt
+    $ cd gma-0.1.3-master/example/ecoli/output/local/ecoli.l100.o0.qA.s0.02.i0.d0 
+    $ ls   
+    aln_se.bam  aln_se.sort.bam  map.txt     ref.fa.ann  ref.fa.pac   ref.fa.rsa
+    aln_se.sai  mapred.txt       ref.fa      ref.fa.bwt  ref.fa.rbwt  ref.fa.s-100-A-0.0200-0.0000-0.0000.fq
+    aln_se.sam  mapsort.txt      ref.fa.amb  ref.fa.fai  ref.fa.rpac  ref.fa.sa
 
 Details of the script file and options will be followed.
 
@@ -223,12 +207,12 @@ Since this may not be trivial for users, here we explain how it works.
 #### **Run using pre-existing settings for different NGS technologies**
 
 For a quick run, we provide parameter settings 5 kinds of the most popular sequencing
-technologies; Illumina, Solid, Ion Torrent, Roche-454 and PacBio. You can use
-one of these options to pass to the mapper tech command, similar to how the illumina option is
-used in the command below. We also support pacbio-ec, which assumes PacBio error corrected case.
+technologies; Illumina, Solid, Ion Torrent, Roche-454 and PacBio. We also support pacbio-ec, 
+which assumes PacBio error corrected case. You can use one of these options to pass 
+to the mapper tech command, similar to how the illumina option is used in the command below. 
 
-    cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper tech --illumina -b 70 -x 
-    ../../../input/index/NC_000913.fna -p ../../../../../bin 1> map.txt
+    $ cd gma-0.1.3-master/example/ecoli/output/local/ecoli.l100.o0.qA.s0.02.i0.d0
+    $ cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper tech --illumina -b 70 -x ../../../input/index/NC_000913.fna -p ../../../../../bin 1> map.txt
 
 | option           | Description  | 
 | ---------------- |------------- |
@@ -246,14 +230,12 @@ Basically, *expr.local.ecoli.pe.sh* follows Hadoop steps, that is *map
 -\> sort/shuffle -\> reduce*. Hence there are 3 important lines in the
 file. You need to generate .ppd file(s) before running map step. Such files
 are included for E. coli and yeast, but you will need to prepare your own .ppd files for
-different species. This is how you can generate pre-processed file for
-map step.
+different species. This examples shows how you can generate pre-processed .ppd files for
+map step from a multi-fasta reference genome.
 
 ###### Step 0 - Preprocess fasta files into .ppd files
 
-<!-- -->
-
-    $ cd {example directory}/yeast/input/ppd
+    $ cd gma-0.1.3/example/yeast/input/ppd
     $ ../../../../script/prepro.chr.py ../index/yeast.fa
     chr1.fa.ppd is being processed
     chr2.fa.ppd is being processed
@@ -275,10 +257,11 @@ map step.
 
 ###### Step 1 - Map
 
-<!-- -->
-
-    cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper runall -l 100 -q A -s 0.02
-     -i 0 -d 0 -o 0 -t 20 -f ref.fa -b 70 -x ../../../input/index/NC_000913.fna  -p ../../../../../bin 1> map.txt
+    $ cd gma-0.1.3/example/yeast/ouput/local
+    $ mkdir yeast.l100.o0.qA.s0.02.i0.d0
+    $ cd yeast.l100.o0.qA.s0.02.i0.d0
+    $ cat ../../../input/ppd/*.ppd | ../../../../../bin/mapper runall -l 100 -q A -s 0.02
+     -i 0 -d 0 -o 0 -t 20 -f ref.fa -b 70 -x ../../../input/index/yeast.fa  -p ../../../../../bin 1> map.txt
 
 In this command, we can learn that *mapper* takes its input as standard
 input(*stdin*). The format of command is as follows:
@@ -308,13 +291,13 @@ table.
 
 The Linux/Unix commond "sort" is used to this purpose.
 
-    cat map.txt | sort -k1,1 -t"|"  > mapsort.txt
+    $ cat map.txt | sort -k1,1 -t"|"  > mapsort.txt
 
 ###### Step 3 - Reduce
 
 For reduce step, the "analyzer" command is used with the following 3 options.
 
-    cat mapsort.txt | ../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
+    cat mapsort.txt | ./../../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
 
 | option   | Description  | 
 | -------- | ------------ |
