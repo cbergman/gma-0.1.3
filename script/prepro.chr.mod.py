@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import os
 
 i = 0
 ovlpstr = ''
@@ -16,9 +17,11 @@ chr_num = 1;
 for arg in sys.argv[1:] :
     filename = arg
     print filename
+    file = os.path.splitext(os.path.basename(filename))[0]
+#   file = filename.split('/')[len(filename.split('/'))-1].split(".")[0]
     fa_in  = open( filename, 'r' )
     #fa_out  = open( filename, 'r' )
-    fa_out = open( filename + '.ppd', 'w' ) # in case of T.v, there'll too many files
+    fa_out = open( file + '.ppd', 'w' ) # in case of T.v, there'll too many files
     
     ovlpstr = ''
     dna = ''
@@ -40,27 +43,27 @@ for arg in sys.argv[1:] :
                 start = 0
                 end = 0
                 i = 0
-                chr = line.split()[0].split('|')[0].strip('>').lstrip('chr') 
+                chr = line.split()[0].split('|')[0].strip('>') 
  
-                if chr.isdigit() == True or chr == "X" or chr == "Y" :
-                    chr = 'chr' + chr
-                else :
-                    if ( "MT" in line ) or ( "mito" in line ) :
-                       chr = 'chrMT'
-                    elif ( "chr" in line ) or ( "CHR" in line ) :
-                       #print chr
-                       chr = 'chr' + chr
+#                if chr.isdigit() == True or chr == "X" or chr == "Y" :
+#                    chr = 'chr' + chr
+#                else :
+#                    if ( "MT" in line ) or ( "mito" in line ) :
+#                       chr = 'chrMT'
+#                    elif ( "chr" in line ) or ( "CHR" in line ) :
+#                       #print chr
+#                       chr = 'chr' + chr
                        #chr = 'chr' + str(chr_num)
                        #chr_num = chr_num + 1
-                    elif "|" in line  :
-                       print line.split("|")[1]
-                       print "T. vaginalis case"
-                    else : 
-                       chr = filename.split('/')[len(filename.split('/'))-1].split(".")[0]
+#                    elif "|" in line  :
+#                       print line.split("|")[1]
+#                       print "T. vaginalis case"
+#                    else : 
+#                chr = filename.split('/')[len(filename.split('/'))-1].split(".")[0]
 
-                fa_out.close()
-                fa_out = open( chr + '.fna.ppd', 'w' )
-                print str(chr+'.fna.ppd'), "is being processed"
+#                fa_out.close()
+#                fa_out = open( chr + '.fna.ppd', 'w' )
+                print str(chr), "is being processed"
 
                 #fa_out.write("(3)")
             else :
