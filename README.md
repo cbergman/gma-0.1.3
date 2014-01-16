@@ -113,13 +113,9 @@ If you go to "gma-0.1.3-master" directory, there are 6 directories.
 ​(1) Pre-compiled binary files
 
 You use pre-compiled binary file in bin directory. Note that **mapper**
-and **reducer** are our responsibility. Since "bwa" and "samtools" are
-needed to run GMA, we included the latest version of them into GMA
-package. They fix bugs and improve their programs, so it is your
-responsibility to update those programs. If they are updated, you can
-always change them with new versions.
-
-This modified distribution also includes bedGraphToBigWig to allow conversion 
+and **reducer** are our responsibility. Since [bwa](http://sourceforge.net/projects/bio-bwa/files/) and [samtools](http://sourceforge.net/projects/samtools/files/) are
+needed to run GMA, we included the precompiled versions of them into GMA
+package. This modified distribution also includes [bedGraphToBigWig](http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/) to allow conversion 
 of GMA output to bigWig format.
 
     $ cd gma-0.1.3-master/bin
@@ -363,5 +359,4 @@ For reduce step, the "analyzer" command is used with the following 3 options.
 See Also
 --------
 
--   [GMA sourceforge project
-    page](https://sourceforge.net/projects/gma-bio/)
+-   [GMA sourceforge project page](https://sourceforge.net/projects/gma-bio/)

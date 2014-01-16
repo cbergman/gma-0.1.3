@@ -30,7 +30,7 @@ for l in 100; do
           cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper runall -l $l -q A -s $s -i $i -d $d -o $o -t 20 -f ref.fa -b 70 -x ../../../input/index/NC_000913.fna  -p ../../../../../bin 1> map.txt
 
           echo "sorting..."
-          cat map.txt | sort > mapsort.txt
+          cat map.txt | sort -k1,1 -t"|" > mapsort.txt
 
           echo "complete"
           echo "====================================="
