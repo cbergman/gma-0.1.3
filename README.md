@@ -96,16 +96,17 @@ Installation
 ​1. Download the modfied version of the latest version of GMA
 [here](https://github.com/cbergman/gma-0.1.3/archive/master.zip).
 
-    $ wget https://github.com/cbergman/gma-0.1.3/archive/master.zip
+    $ wget -O gma-0.1.3.zip https://github.com/cbergman/gma-0.1.3/archive/master.zip
 
 ​2. Extract files.
 
-    $ unzip master.zip
+    $ unzip gma-0.1.3.zip 
 
 If you go to "gma-0.1.3-master" directory, there are 6 directories.
 
     $ cd gma-0.1.3-master/
-    bin  example  inc  lib  script  src
+    $ ls
+    bin  example  inc  lib  script  src README.md
 
 ​3. Now you have two options to run GMA
 
@@ -123,7 +124,7 @@ of GMA output to bigWig format.
 
     $ cd gma-0.1.3-master/bin
     $ ls
-    bwa mapper reducer samtools bedGraphToBigWig
+    bedGraphToBigWig bwa mapper reducer samtools 
 
 ​(2) Compiling source code.
 
@@ -145,15 +146,8 @@ If compiling works smoothly, you can find new binary files in bin/
 directory. Note that there will be no binary files newly generated
 in src/ directory. Makefile script moves them to bin/ automatically.
 
-Commands and Options
---------------------
-
-Options of GMA are designed for users to use them intuitively. However,
-it may confuse users because it is implemented for large scale data and
-cloud computing such as [Hadoop](http://hadoop.apache.org/). Hence, we
-add simple script files to give you ideas how to run GMA.
-
-### **Quick Start**
+Quick Start
+-----------
 
 For quick start, there are two important directories that you must know.
 One is *example* and the other is *script*. In the example directory, there is
@@ -176,12 +170,10 @@ input/ppd directories, respectively.
     $ ls example/ecoli/input/ppd
     NC_000913.fa.ppd
 
-
 Now, all you need is to run script in script/ directory.
 
     $ cd gma-0.1.3-master/script/
     $ ./expr.local.ecoli.sh 
-    .
     .
     .
 
@@ -194,22 +186,85 @@ is generated with "timestamp.txt". The result file name is "mapred.txt".
     aln_se.sai  mapred.txt       ref.fa      ref.fa.bwt  ref.fa.rbwt  ref.fa.s-100-A-0.0200-0.0000-0.0000.fq
     aln_se.sam  mapsort.txt      ref.fa.amb  ref.fa.fai  ref.fa.rpac  ref.fa.sa
 
-Details of the script file and options will be followed.
+In the *script* directory there are 4 example script files to run GMA on single machine:
 
-### **Local version**
+-   expr.local.ecoli.sh
+-   expr.local.yeast.sh
+-   expr.local.ecoli.tech.sh
+-   expr.local.yeast.tech.sh
+
+The scripts with "tech" in their filenames run with pre-set options for different NGS technologies.  
+
+Detailed usage instructions
+--------------------------------
 
 GMA provides two main binary files -- mapper and reducer -- whose names are
-more intuitive under
-[MapReduce](http://en.wikipedia.org/wiki/MapReduce). For this reason,
-the local version of GMA is run using a the combination of two programs.
-Since this may not be trivial for users, here we explain how it works.
+more intuitive under [MapReduce](http://en.wikipedia.org/wiki/MapReduce). 
+The local version of GMA is run using a the combination of two programs. 
+Help menus for the mapper and reducer programs are as follows. 
 
-#### **Run using pre-existing settings for different NGS technologies**
+    $ ../../../../../bin/mapper -h
+    
+    Program : GMA (Genome Mappability Analyzer) MAPPER
+    Version : 0.0.1
+    
+    Usage : gma [COMMAND] [OPTION] [FASTA]
+    [COMMAND] runall | genfqse | genfqpe | genfa
+    runall : Proceed genfqse/genfqpe/analyze.
+        -l   Length [1-200]
+        -q   Quality  value. Refer http://en.wikipedia.org/wiki/FASTQ_format
+        -s   Substitution rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -i   Insertion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -d   Deletion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -o   library distance bp [100-250] between end of start and start of end
+             If -o option is specified, pair-end aligment will be forced unless it is 0(zero)
+             If -o option is zero, single-end reads will be generated
+        -t   Threshold for map quality to analyze sam file and generatemap result.
+        -f   FASTA file name to be generated, e.g. ref.fa
+        -b   The number of bases per line in FASTA file before it is preprocessed
+        -x   index file path
+        -p   use if you use Hadoop and should specify the directory that includes bwa and samtools and can be accessed by hadoop.
+    genfqse : Generate FastQ file for single ends.
+        -l   Length [1-200]
+        -q   Quality  value. Refer http://en.wikipedia.org/wiki/FASTQ_format
+        -s   Substitution rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -i   Insertion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -d   Deletion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+    genfqpe : Generate FastQ file for mate pair.
+        -l   Length [1-200]
+        -q   Quality  value. Refer http://en.wikipedia.org/wiki/FASTQ_format
+        -s   Substitution rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -i   Insertion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -d   Deletion rate. [0.0000 - 1.0000] 1 means 100%, 0.25 means 25%
+        -o   library distance bp [100-250] between end of start and start of end
+             If -o option is specified, pair-end aligment will be forced unless it is 0(zero)
+             If -o option is zero, single-end reads will be generated
+        -b   The number of bases per line in FASTA file before it is preprocessed
+    genfa : Generate FastA file from preprocessed file.
+        -f   FASTA file name to be generated, e.g. ref.fa
+        -b   The number of bases in a line of FASTA file
+    extract : extract information from bam file then make an intermediate file
+        -l   Length [1-200]
+        -f   FASTA file name to be generated, e.g. ref.fa
+        -m   BAM file name
+
+    $ reducer -h
+    Program : GMA (Genome Mappability Analyzer) REDUCER
+    Version : 0.0.1
+    Usage : reducer [COMMAND] [OPTION]
+    [COMMAND] analyzer
+    analyzer : anlayze map results, calculate genome mappabilityr.
+    	[OPTION] l | t
+    	-l   Length [1-200]
+    	-t   Threshold of map quality from sam file
+
+### **Run using pre-existing settings for different NGS technologies**
 
 For a quick run, we provide parameter settings 5 kinds of the most popular sequencing
 technologies; Illumina, Solid, Ion Torrent, Roche-454 and PacBio. We also support pacbio-ec, 
 which assumes PacBio error corrected case. You can use one of these options to pass 
-to the mapper tech command, similar to how the illumina option is used in the command below. 
+to the mapper tech command, similar to how the illumina option is used in the command below
+to generate GMS files for 100bp single-ended reads on the E. coli genome. 
 
     $ cd gma-0.1.3-master/example/ecoli/output/local/ecoli.l100.o0.qA.s0.02.i0.d0
     $ cat ../../../input/ppd/NC_000913.fa.ppd | ../../../../../bin/mapper tech --illumina -b 70 -x ../../../input/index/NC_000913.fna -p ../../../../../bin 1> map.txt
@@ -223,19 +278,20 @@ to the mapper tech command, similar to how the illumina option is used in the co
 | **--pacbio**     | Settings for PacBio |
 | **--pacbio-ec**  | Settings for PacBio error corrected version |
 
+### **Run using your own settings**
 
-#### **Run using your own settings**
-
-Basically, *expr.local.ecoli.pe.sh* follows Hadoop steps, that is *map
--\> sort/shuffle -\> reduce*. Hence there are 3 important lines in the
-file. You need to generate .ppd file(s) before running map step. Such files
+The scripts listed above such as *expr.local.ecoli.sh* follow basic Hadoop steps: *map
+-\> sort/shuffle -\> reduce*. Hence there are 3 important lines in these scripts
+that you must modify to run GMA with your own settings. As a pre-processing step, 
+you need to generate .ppd file(s) before running map step. Such files
 are included for E. coli and yeast, but you will need to prepare your own .ppd files for
 different species. This examples shows how you can generate pre-processed .ppd files for
-map step from a multi-fasta reference genome.
+from a multi-fasta reference genome and then generate 100bp single-ended GMS files 
+for the yeast genome.
 
-###### Step 0 - Preprocess fasta files into .ppd files
+##### Step 0 - Preprocess fasta files into .ppd files
 
-    $ cd gma-0.1.3/example/yeast/input/ppd
+    $ cd gma-0.1.3-master/example/yeast/input/ppd
     $ ../../../../script/prepro.chr.py ../index/yeast.fa
     chr1.fa.ppd is being processed
     chr2.fa.ppd is being processed
@@ -255,13 +311,12 @@ map step from a multi-fasta reference genome.
     chr16.fa.ppd is being processed
     chrMT.fa.ppd is being processed
 
-###### Step 1 - Map
+##### Step 1 - Map
 
-    $ cd gma-0.1.3/example/yeast/ouput/local
+    $ cd gma-0.1.3-master/example/yeast/output/local
     $ mkdir yeast.l100.o0.qA.s0.02.i0.d0
     $ cd yeast.l100.o0.qA.s0.02.i0.d0
-    $ cat ../../../input/ppd/*.ppd | ../../../../../bin/mapper runall -l 100 -q A -s 0.02
-     -i 0 -d 0 -o 0 -t 20 -f ref.fa -b 70 -x ../../../input/index/yeast.fa  -p ../../../../../bin 1> map.txt
+    $ cat ../../../input/ppd/*.ppd | ../../../../../bin/mapper runall -l 100 -q A -s 0.02 -i 0 -d 0 -o 0 -t 20 -f ref.fa -b 70 -x ../../../input/index/yeast.fa  -p ../../../../../bin 1> map.txt
 
 In this command, we can learn that *mapper* takes its input as standard
 input(*stdin*). The format of command is as follows:
@@ -286,51 +341,23 @@ table.
 | **-m**   | File path of bam file |
 | **-p**   | File path for programs such as BWA and SAMtools |
 
-
-###### Step 2 - Sort
+##### Step 2 - Sort
 
 The Linux/Unix commond "sort" is used to this purpose.
 
     $ cat map.txt | sort -k1,1 -t"|"  > mapsort.txt
 
-###### Step 3 - Reduce
+##### Step 3 - Reduce
 
 For reduce step, the "analyzer" command is used with the following 3 options.
 
-    cat mapsort.txt | ./../../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
+    cat mapsort.txt | ../../../../../bin/reducer analyzer -l 100 -t 20 -o 0 1> mapred.txt 2> log.txt
 
 | option   | Description  | 
 | -------- | ------------ |
 | **-l**   | Read length |
 | **-t**   | Threshold |   
 | **-o**   | Expected distance between two reads if paired-end. |
-
-### **Example Scripts**
-
-In the *script* directory there are 6 script files:
-
--   expr.hadoop.ecoli.sh
--   expr.hadoop.yeast.sh
--   expr.local.ecoli.sh
--   expr.local.yeast.sh
--   expr.local.ecoli.tech.sh
--   expr.local.yeast.tech.sh
-
-The local scripts demonstrate how to run GMA on a single workstation. The scripts 
-with tech in theit filenames run with pre-set options for different NGS technologies.
-The hadoop scripts demonstrate how to run GMA on a cloud computing system
-such as EC2, you can use expr.hadoop.\* script file This is a simple guideline. Since we have no idea
-about your system environment, you need to modify the given scripts
-along to your system. There are explicitly specified with keyword "TODO"
-so that users easily modify 3 TODOs in the scripts.
-
-    [TODO: index file path]
-    [TODO: hadoop input path on HDFS] 
-    [TODO: hadoop output path on HDFS] 
-
-Then, you can run the script in your script directory.
-
-    script$ ./expr.local.yeast.sh 
 
 See Also
 --------
